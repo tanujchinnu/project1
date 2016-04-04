@@ -1,0 +1,14 @@
+
+<project name="TopUp" default="deploy" basedir=".">
+
+
+	<!-- Define the properties used by the build -->
+	<property file="deploy.properties" />
+	<import file="build.xml"/>
+	<target name="deploy" >
+		<exec executable="${tomcat.dir}/bin/shutdown.bat" />
+		<copy file="${war.dir}/${app.name}.war" todir="${tomcat.dir}/webapps"/>		
+		<exec executable="${tomcat.dir}/bin/startup.bat" />
+	</target>
+
+</project>
